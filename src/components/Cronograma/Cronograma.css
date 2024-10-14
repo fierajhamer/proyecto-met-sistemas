@@ -1,0 +1,52 @@
+.Cronograma-container {
+    height: 90%;
+    width: 75%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.Cronograma-container .title {
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+gap: 10px;
+}
+
+.tabla-cronograma {
+    width: 100%;
+    height: 40%;
+
+    overflow-y: auto;
+}
+
+table {
+    border-collapse: collapse;
+    height: 100%;
+    width: 100%;
+    font-size: 0.4cm;
+}
+
+td,
+th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 5px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+th:first-child, td:first-child {
+    width: 10%; /* Reduce el tamaño de la columna de días */
+    min-width: 80px;
+}
+
+/* Ajuste para el resto de las columnas */
+th, td {
+    word-wrap: break-word; /* Asegura que el contenido se ajuste al tamaño de la celda */
+}
