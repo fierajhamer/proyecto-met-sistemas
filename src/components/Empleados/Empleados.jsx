@@ -14,6 +14,11 @@ export default function Empleados({ empleados, setEmpleados }) {
     }
   };
 
+  const quitarEmpleado = (id) => {
+    let nuevosEmpleados = empleados.filter(empleado => empleado.id != id)
+    setEmpleados(nuevosEmpleados)
+  }
+
   const manejarTeclaPresionada = (e) => {
     if (e.key === "Enter") {
       agregarEmpleado();
@@ -37,7 +42,7 @@ export default function Empleados({ empleados, setEmpleados }) {
       <div className="lista">
         <ul>
           {empleados.map((empleado) => (
-            <li key={empleado.id}>👮 {empleado.nombre}</li>
+            <li key={empleado.id}>👮 {empleado.nombre} <button onClick={()=>quitarEmpleado(empleado.id)} style={{marginLeft:"10px"}}>Quitar</button> </li>
           ))}
         </ul>
       </div>
