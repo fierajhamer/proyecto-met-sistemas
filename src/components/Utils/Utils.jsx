@@ -3,7 +3,8 @@ export const shuffleArray = (array) =>
     .map((item) => ({ ...item, sort: Math.random() }))
     .sort((a, b) => a.sort - b.sort);
 
-export const asignarDiasFrancos = (empleados) => {
+export const asignarDiasFrancos = (empleados) => 
+  {
   const dias = Array.from({ length: 7 }, (_, i) => i);
   const diasAsignados = shuffleArray(dias);
 

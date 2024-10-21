@@ -14,6 +14,11 @@ export default function Objetivos({ objetivos, setObjetivos }) {
     }
   };
 
+  const quitarObjetivo = (id) => {
+    let nuevosObjetivos = objetivos.filter(objetivo => objetivo.id != id)
+    setObjetivos(nuevosObjetivos)
+  }
+
   const manejarTeclaPresionada = (e) => {
     if (e.key === "Enter") {
       agregarObjetivo();
@@ -36,7 +41,7 @@ export default function Objetivos({ objetivos, setObjetivos }) {
       <div className="lista">
         <ul>
           {objetivos.map((objetivo) => (
-            <li key={objetivo.id}>📍 {objetivo.lugar}</li>
+            <li key={objetivo.id}>📍 {objetivo.lugar} <button onClick={()=>quitarObjetivo(objetivo.id)} style={{marginLeft:"10px"}}>Quitar</button></li>
           ))}
         </ul>
       </div>
