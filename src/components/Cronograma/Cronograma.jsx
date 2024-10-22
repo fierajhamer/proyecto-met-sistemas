@@ -28,17 +28,19 @@ export default function Cronograma({ empleados, objetivos }) {
       const empleadosDisponibles = empleadosConFrancos.filter(
         (empleado) => empleado.franco !== i
       );
-      const empleadosAleatorios = shuffleArray(empleadosDisponibles);
 
-      const asignacionesPorDia = objetivos.map((objetivo) => ({
-        objetivo: objetivo.lugar,
-        turnos: ["🏙️", "🌇", "🌆"].map((turno, j) => ({
-          turno,
-          empleado:
-            empleadosAleatorios[j % empleadosAleatorios.length]?.nombre ||
-            "Sin asignar",
-        })),
-      }));
+      const asignacionesPorDia = objetivos.map((objetivo) => {
+        let empleadosAleatorios = shuffleArray(empleadosDisponibles);
+      
+        return {
+          objetivo: objetivo.lugar,
+          turnos: ["🏙️", "🌇", "🌆"].map((turno, j) => ({
+            turno,
+            empleado:
+              empleadosAleatorios[j % empleadosAleatorios.length]?.nombre || "Sin asignar",
+          })),
+        };
+      });
 
       nuevoCronograma.push({
         dia: diaActual.format("dddd DD/MM"),
